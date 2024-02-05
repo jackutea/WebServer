@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYL Main Page</title>
+</head>
+
+<body>
+
+    <a href="/dl" target="_blank">主页</a>
+    <a href="/blog">我的文章</a>
+
+    <form action="/submit" method="POST" name="CommentSubmit">
+        <input type="text" name="comment" placeholder="Leave a comment">
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        fetch("/comments", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                "comment": "I love your site!"
+            })
+        }).catch(console.error);
+    </script>
+</body>
+
+</html>
